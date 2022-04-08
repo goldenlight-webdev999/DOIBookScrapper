@@ -1,0 +1,3 @@
+F:\__111__journal-download\__Proj__\BookDOIScrapper\BookScrapperDOI\bin\Release\net5.0-windows\win-x86\publish\BookScrapperDOI.pdb
+F:\__111__journal-download\__Proj__\BookDOIScrapper\BookScrapperDOI\bin\Release\net5.0-windows\win-x86\publish\General.pdb
+F:\__111__journal-download\__Proj__\BookDOIScrapper\BookScrapperDOI\bin\Release\net5.0-windows\win-x86\publish\BookScrapperDOI.exe

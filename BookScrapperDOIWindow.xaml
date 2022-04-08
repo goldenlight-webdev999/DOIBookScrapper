@@ -1,0 +1,325 @@
+﻿<Window x:Class="BookScrapperDOI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BookScrapperDOI"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="760"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="#181735" MouseDown="Window_MouseDown" Closing="Window_Closing" Loaded="Window_Loaded">
+    <Grid RenderTransformOrigin="0.548,0.496" Margin="0,0,10,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="760"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Background="#181735" HorizontalAlignment="Left" Width="760">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="DOI Scrapper"
+                   Foreground="Wheat"
+                   Grid.Column="0"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   FontFamily="Fonts/#Bullying"
+                       FontSize="20"
+                   FontWeight="Medium"/>
+
+            <Button Content="Minimize"
+                    Name="BtnMinimizeWindow"
+                    Grid.Column="2"
+                        Foreground="White"
+                        FontSize="14"
+                        FontWeight="Medium" Click="BtnMinimizeWindow_Click" Margin="157,2,119,-2" Grid.ColumnSpan="2">
+
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Bullying"/>
+                        <Setter Property="Background" Value="#C0D514"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#C0C524"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="100" Height="25"
+                                    CornerRadius="12"
+                                    Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Content="Close"
+                    Name="BtnCloseWindow"
+                    Grid.Column="3"
+                        Foreground="White"
+                        FontSize="14"
+                        FontWeight="Medium" Click="BtnCloseWindow_Click" Margin="76,2,10,-2">
+
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Bullying"/>
+                        <Setter Property="Background" Value="#FE6584"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FE4C70"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="100" Height="25"
+                                    CornerRadius="12"
+                                    Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Grid>
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="3">
+            <StackPanel Orientation="Horizontal" Margin="10, 10, 10, 0">
+                <Button Content="Select Folder"
+                        Name="BtnSelectExcelFile"
+                        Foreground="White"
+                        FontSize="14"
+                        FontWeight="Medium" Click="BtnSelectWorkFolder_Click">
+
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Bullying"/>
+                            <Setter Property="Background" Value="#3DDDC2"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#3DDA50"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="100" Height="25"
+                                    CornerRadius="12"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <TextBox 
+                         Name="TbWorkFolderPath"
+                         Margin="10,0,0,0"
+                   Foreground="#181735"
+                   Grid.Column="1"
+                   VerticalAlignment="Center"
+                   FontFamily="Fonts/#Bullying"
+                       FontSize="14"
+                    
+                   FontWeight="Medium" Width="625"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.ColumnSpan="3">
+            <StackPanel Orientation="Horizontal" Margin="10, 10, 10, 0">
+                <Button Content="Start"
+                        Name="BtnStartWork"
+                        Foreground="White"
+                        FontSize="14"
+                        FontWeight="Medium" 
+                        Click="BtnStartWork_Click">
+
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Bullying"/>
+                            <Setter Property="Background" Value="#3DDDC2"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#3DDA50"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="100" Height="25"
+                                    CornerRadius="12"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <TextBlock Text="Retry Count"
+                    Foreground="Wheat"
+                    FontFamily="Fonts/#Bullying"
+                    FontSize="13"
+                    VerticalAlignment="Center"
+                    Margin="20, 0, 10, 0"
+                    FontWeight="Medium" 
+                   />
+                <xctk:IntegerUpDown 
+                    x:Name="IudRetryMaxCnt" 
+                    Width="39" 
+                    FontSize="14px"
+                    Maximum="20"
+                    Minimum="1"
+                    Value="3"
+                    Background="#3DDDC2"
+                    Foreground="White"
+                    ValueChanged="IudRetryMaxCnt_ValueChanged"
+                    >
+                </xctk:IntegerUpDown>
+                <ComboBox 
+                    x:Name="CbDomainName"
+                    Width="336"
+                    Foreground="#181735"
+                    Background="#3DDDC2"
+                    Margin="20,0,0,0" SelectedIndex="0"
+                    FontSize="14px" BorderBrush="#FF3DDDC2"
+                    >
+                    <ComboBoxItem Foreground="#3DDDC2" Background="#181735" Content="https://sci-hub.ee/"/>
+                    <ComboBoxItem Foreground="#3DDDC2" Background="#181735" Content="https://sci-hub.ru/"/>
+                    <ComboBoxItem Foreground="#3DDDC2" Background="#181735" Content="https://sci-hub.st/"/>
+                    <ComboBoxItem Foreground="#3DDDC2" Background="#181735" Content="https://sci-hub.se/"/>
+                    <ComboBoxItem Foreground="#3DDDC2" Background="#181735" Content="https://sci-hub.wf/"/>
+                </ComboBox>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,0,10,0">
+            <TextBlock Text="0/0 finished"
+                   x:Name="LbProgressStatusTotal"
+                   Foreground="Wheat"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   FontFamily="Fonts/#Bullying"
+                   FontSize="14"
+                   FontWeight="Medium"
+                   Margin="16,10,0,0" 
+                   Grid.Column="0"/>
+            <TextBlock Text="0 failed"
+                   x:Name="LbFailedStatusTotal"
+                   Foreground="Wheat"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   FontFamily="Fonts/#Bullying"
+                       FontSize="14"
+                   FontWeight="Medium" 
+                   Margin="16,10,0,0" 
+                   Grid.Column="1"/>
+            <TextBlock Text="0 s/file"
+                   x:Name="LbTimeSpeed"
+                   Foreground="Wheat"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   FontFamily="Fonts/#Bullying"
+                       FontSize="14"
+                   FontWeight="Medium" 
+                   Margin="16,10,0,0" 
+                   Grid.Column="2"/>
+            <TextBlock Text="0 mins remained"
+                   x:Name="LbTimeEstimationTotal"
+                   Foreground="Wheat"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   FontFamily="Fonts/#Bullying"
+                       FontSize="14"
+                   FontWeight="Medium" 
+                   Margin="16,10,0,0" 
+                   Grid.Column="2"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="0,0,10,0">
+
+            <TextBlock Text="0/0 finished"
+                   x:Name="LbProgressStatus"
+                   Foreground="Wheat"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   FontFamily="Fonts/#Bullying"
+                   FontSize="14"
+                   FontWeight="Medium"
+                   Margin="16,10,0,0" 
+                   Grid.Column="0"/>
+            <TextBlock Text="0 failed"
+                   x:Name="LbFailedStatus"
+                   Foreground="Wheat"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   FontFamily="Fonts/#Bullying"
+                       FontSize="14"
+                   FontWeight="Medium" 
+                   Margin="16,10,0,0" 
+                   Grid.Column="1"/>
+            <TextBlock Text="No file is under processing"
+                   x:Name="LbTimeEstimation"
+                   Foreground="Wheat"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   FontFamily="Fonts/#Bullying"
+                       FontSize="14"
+                   FontWeight="Medium" 
+                   Margin="16,10,0,0" 
+                   Grid.Column="2"/>
+        </StackPanel>
+        <StackPanel Grid.Row="5" Orientation="Horizontal" Margin="10,0,10,0">
+            <ProgressBar 
+                x:Name ="PbStatus" 
+                Height="14" 
+                Width="744"
+                Foreground="#3DDDC2"/>
+        </StackPanel>
+        <StackPanel Grid.Row="6" Orientation="Horizontal" Margin="10,0,10,0">
+            <TextBox 
+            x:Name="TbLog" 
+            Height="246" 
+            Text=""
+            TextWrapping="Wrap" 
+            Foreground="Wheat"
+            Background="#181735"
+            Width="733"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            ScrollViewer.VerticalScrollBarVisibility="Auto"
+            FontFamily="Fonts/#Bullying"
+            FontSize="14" 
+            
+            TextChanged="TbLog_TextChanged"/>
+        </StackPanel>
+    </Grid>
+</Window>
